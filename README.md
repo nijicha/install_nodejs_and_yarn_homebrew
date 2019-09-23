@@ -81,10 +81,14 @@ See more about `nvm` : https://github.com/creationix/nvm
     
     $ `ln -s ~/.nvm/versions/node/$(nvm current)/ /usr/local/Cellar/node`
 
-6. Overwrite nvm node to homebrew
+6. Overwrite `node, npm and npx` from linked `node` in `/usr/local/Cellar/node` to `/usr/local/bin/` homebrew
 
     $ `brew link --overwrite node`
     
-7. Checkout `brew doctor` again. There shouldn't have **WARNING** message.
+7. Checkout `ls -la /usr/local/bin` to see overwrited `node, npm and npx`
+    
+8. Checkout `brew doctor` again. There shouldn't have **WARNING** message.
 
     $ `brew doctor`
+
+9. Enjoy ! ❤️
