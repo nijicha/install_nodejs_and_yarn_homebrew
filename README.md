@@ -80,7 +80,11 @@ See more about `nvm` : https://github.com/creationix/nvm
     $ `mkdir /usr/local/Cellar/node`
     
     $ `ln -s ~/.nvm/versions/node/$(nvm current)/ /usr/local/Cellar/node`
+
+6. Overwrite nvm node to homebrew
+
+    $ `brew link --overwrite node`
     
-6. Checkout `brew doctor` again. There shouldn't have **WARNING** message.
+7. Checkout `brew doctor` again. There shouldn't have **WARNING** message.
 
     $ `brew doctor`
