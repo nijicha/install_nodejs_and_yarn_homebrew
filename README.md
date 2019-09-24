@@ -53,13 +53,13 @@
     
 See more about `nvm` : https://github.com/creationix/nvm
 
-### Part B: Install Yarn
+### Part B: Install Yarn and Linked nvm node to Homebrew
 
-1. Install `yarn` via Homebrew and remove `node` dependencies from Homebrew
+1. Install `yarn` via Homebrew
 
     $ `brew install yarn`
 
-2. Uninstall homebrew `node`
+2. Remove `node` dependencies from Homebrew
 
     $ `brew uninstall node --ignore-dependencies`
 
@@ -91,4 +91,12 @@ See more about `nvm` : https://github.com/creationix/nvm
 
     $ `brew doctor`
 
-9. Enjoy ! ❤️
+9. Prevent Homebrew upgrading node version
+
+    $ `brew pin node`
+
+10. Enjoy ! ❤️
+
+### Part C: To change node.js version and Re-configure Homebrew
+
+TODO here
