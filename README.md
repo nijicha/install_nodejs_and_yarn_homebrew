@@ -2,6 +2,8 @@
 
 ## Updated at: 2019/09/23
 
+> Move from this [Gist](https://gist.github.com/nijicha/e5615548181676873118df79953cb709)
+>
 > Pull request is available. Please help me contribute this one 😂.
 
 ## Prerequisites
@@ -18,9 +20,9 @@
 2. Add following line to your profile. (`.profile` or `.zshrc` or `.zprofile`)
 
     ```bash
-      # NVM
-      export NVM_DIR=~/.nvm
-      source $(brew --prefix nvm)/nvm.sh
+    # NVM
+    export NVM_DIR=~/.nvm
+    source $(brew --prefix nvm)/nvm.sh
     ```
     
 3. Close and open your terminal again.
