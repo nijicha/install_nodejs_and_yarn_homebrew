@@ -69,7 +69,7 @@ See more about `nvm` : https://github.com/creationix/nvm
 
     $ `which node`
     
-    It should be return => `/User/<your's-user-name>/.nvm/versions/node/<latest-node-lts-version>/bin/node`
+    It should be return => `/User/<your-user-name>/.nvm/versions/node/<latest-node-lts-version>/bin/node`
     
 4. Checkout `brew doctor` there should show message **WARNING missing yarn dependencies**
     
