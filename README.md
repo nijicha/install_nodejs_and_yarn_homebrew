@@ -102,3 +102,10 @@ See more about `nvm` : https://github.com/creationix/nvm
 ### Part C: To change node.js version and Re-configure Homebrew
 
 TODO here
+- [ ] Add "How to upgrade yarn in Homebrew" with an errors
+    > brew upgrade
+      Error: Not upgrading 1 pinned package:
+      node 12.12.0
+      ==> Upgrading 1 outdated package:
+      yarn 1.19.0 -> 1.19.1
+      Error: You must `brew unpin node` as installing yarn requires the latest version of pinned dependencies
