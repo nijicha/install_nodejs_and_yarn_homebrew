@@ -41,9 +41,9 @@
 
     $ `nvm ls-remote`
     
-6. Install NodeJS (_Recommended to install LTS version. Current LTS is Dubnium_)
+6. Install NodeJS (_Recommended to install LTS version. Current LTS is Erbium_)
     
-    $ `nvm install --lts='Dubnium'`
+    $ `nvm install --lts=Erbium`
     
 7. Check installed NodeJS in your machine.
 
@@ -77,7 +77,7 @@ See more about `nvm` : https://github.com/creationix/nvm
     
 5. Create symbol link from `nvm` for `yarn` in Homebrew.
 
-    $ `nvm current` => v10.16.0 (Latest LTS: Dubnium) (This should be **Global** node version)
+    $ `nvm current` => v12.13.0 (Latest LTS: Erbium) (This should be **Global** node version)
     
     $ `mkdir /usr/local/Cellar/node`
     
