@@ -1,6 +1,6 @@
 # Install NVM, NodeJS, Yarn via Homebrew
 
-## Updated at: 2019/09/23
+## Notice
 
 > Move from this [Gist](https://gist.github.com/nijicha/e5615548181676873118df79953cb709)
 >
