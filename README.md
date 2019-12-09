@@ -75,7 +75,7 @@ See more about `nvm` : https://github.com/creationix/nvm
     
     $ `brew doctor`
     
-5. Create symbol link from `nvm` for `yarn` in Homebrew.
+5. Create blank folder and create symbol link `node` folder from `nvm` for `yarn` in Homebrew.
 
     $ `nvm current` => v12.13.0 (Latest LTS: Erbium) (This should be **Global** node version)
     
@@ -99,13 +99,44 @@ See more about `nvm` : https://github.com/creationix/nvm
 
 10. Enjoy ! ❤️
 
-### Part C: To change node.js version and Re-configure Homebrew
+### Part C: Upgrading, To change node.js version and Re-configure Homebrew
 
-TODO here
-- [ ] Add "How to upgrade yarn in Homebrew" with an errors
-    > brew upgrade
-      Error: Not upgrading 1 pinned package:
-      node 12.12.0
-      ==> Upgrading 1 outdated package:
-      yarn 1.19.0 -> 1.19.1
-      Error: You must `brew unpin node` as installing yarn requires the latest version of pinned dependencies
+
+1. Checkout `nvm` for to use `node` version (For this example case I will use LTS Erbium)
+
+    $ `nvm list`    
+
+    ```shell 
+    $ nvm list
+    ->      v12.13.1
+            system
+    default -> 12.13.1 (-> v12.13.1)
+    node -> stable (-> v12.13.1) (default)
+    stable -> 12.13 (-> v12.13.1) (default)
+    iojs -> N/A (default)
+    unstable -> N/A (default)
+    lts/* -> lts/erbium (-> v12.13.1)
+    lts/argon -> v4.9.1 (-> N/A)
+    lts/boron -> v6.17.1 (-> N/A)
+    lts/carbon -> v8.16.2 (-> N/A)
+    lts/dubnium -> v10.17.0 (-> N/A)
+    lts/erbium -> v12.13.1
+   ``` 
+    \* See more about `nvm` : https://github.com/creationix/nvm
+
+
+2. Remove the symbol link which we linked `node` in Homebrew `/usr/local/Cellar/node`
+
+    $ `rm -rf /usr/local/Cellar/node`
+
+3. Unpin `node` in Homebrew for upgrading `yarn`
+
+    $ `brew unpin node`
+
+4. Upgrade `yarn`
+   
+    $ `brew upgrade yarn`
+
+5. Continue on Part B 2. - 10. steps again.
+
+6. Say yay 😝
