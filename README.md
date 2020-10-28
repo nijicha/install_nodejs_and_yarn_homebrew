@@ -37,7 +37,7 @@
 
     $ `nvm --version`
     
-5. Check all avaliable version by this command
+5. Check all available version by this command
 
     $ `nvm ls-remote`
     
