@@ -41,9 +41,9 @@
 
     $ `nvm ls-remote`
     
-6. Install NodeJS (_Recommended to install LTS version. Current LTS is Erbium_)
+6. Install NodeJS (_Recommended to install LTS version. Current LTS is Fermium_)
     
-    $ `nvm install --lts=Erbium`
+    $ `nvm install --lts=Fermium`
     
 7. Check installed NodeJS in your machine.
 
@@ -77,7 +77,7 @@ See more about `nvm` : https://github.com/creationix/nvm
     
 5. Create blank folder and create symbol link `node` folder from `nvm` for `yarn` in Homebrew.
 
-    $ `nvm current` => v12.13.0 (Latest LTS: Erbium) (This should be **Global** node version)
+    $ `nvm current` => v14.15.0 (Latest LTS: Fermium) (This should be **Global** node version)
     
     $ `mkdir /usr/local/Cellar/node`
     
@@ -102,7 +102,7 @@ See more about `nvm` : https://github.com/creationix/nvm
 ### Part C: Upgrading, To change node.js version and Re-configure Homebrew
 
 
-1. Checkout `nvm` for to use `node` version (For this example case I will use LTS Erbium)
+1. Checkout `nvm` for to use `node` version (For this example case I will use LTS Fermium)
 
     $ `nvm list`    
 
