@@ -72,24 +72,24 @@
 > Alternatively, If your had configured your **SHELL** to support Homebrew native & Homebrew rosetta2 (e.g. script below like I did)
 > You can install `v15` or lower via Homebrew rosetta2. But I prefer to use v16+ (LTS Gallium)
 
-    ```bash
-    # My .zprofile
+```bash
+# My .zprofile
 
-    # Apple M1
-    if [ "$(uname -m)" = "arm64" ]; then
-      # Use arm64 brew, with fallback to x86 brew
-      if [ -f /opt/homebrew/bin/brew ]; then
-        export PATH="/usr/local/bin${PATH+:$PATH}";
-        eval $(/opt/homebrew/bin/brew shellenv)
-      fi
-    else
-      # Use x86 brew, with fallback to arm64 brew
-      if [ -f /usr/local/bin/brew ]; then
-        export PATH="/opt/homebrew/bin${PATH+:$PATH}";
-        eval $(/usr/local/bin/brew shellenv)
-      fi
-    fi
-    ```
+# Apple M1
+if [ "$(uname -m)" = "arm64" ]; then
+  # Use arm64 brew, with fallback to x86 brew
+  if [ -f /opt/homebrew/bin/brew ]; then
+    export PATH="/usr/local/bin${PATH+:$PATH}";
+    eval $(/opt/homebrew/bin/brew shellenv)
+  fi
+else
+  # Use x86 brew, with fallback to arm64 brew
+  if [ -f /usr/local/bin/brew ]; then
+    export PATH="/opt/homebrew/bin${PATH+:$PATH}";
+    eval $(/usr/local/bin/brew shellenv)
+  fi
+fi
+```
 
 1. Install `nodejs` and `yarn`
 
