@@ -1,4 +1,4 @@
-# Install NodeJS, Yarn via Homebrew (managed by asdf-vm)
+# Install NodeJS, Yarn via Homebrew
 
 ## Notice
 > Thank you everyone. For became a stargazers.
@@ -6,6 +6,8 @@
 > I had created this guideline for personal note purpose (first on [Gist](https://gist.github.com/nijicha/e5615548181676873118df79953cb709) and then this repository)
 >
 > Pull request is available. Please help me contribute this one 😂.
+> 
+> Legacy note (guideline) had moved to branch `legacy-note`
 
 ## Prerequisites
 - [Homebrew](https://brew.sh/) should be installed (Command line tools for Xcode are included).
@@ -40,7 +42,7 @@
 
     `asdf version`
     
-5. Install asdf plugins
+5. Install `asdf` plugins
 
     ```shell
     asdf plugin add nodejs
