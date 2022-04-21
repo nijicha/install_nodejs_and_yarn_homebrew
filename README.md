@@ -1,142 +1,140 @@
-# Install NVM, NodeJS, Yarn via Homebrew
+# Install NodeJS, Yarn via Homebrew (managed by asdf-vm)
 
 ## Notice
-
-> Move from this [Gist](https://gist.github.com/nijicha/e5615548181676873118df79953cb709)
+> Thank you everyone. For became a stargazers.
+>
+> I had created this guideline for personal note purpose (first on [Gist](https://gist.github.com/nijicha/e5615548181676873118df79953cb709) and then this repository)
 >
 > Pull request is available. Please help me contribute this one 😂.
 
 ## Prerequisites
 - [Homebrew](https://brew.sh/) should be installed (Command line tools for Xcode are included).
 
-## Getting start
+## Getting started
 
-### Part A: Install NVM and NodeJS
+### Part A: Install asdf-vm (A parts from official [website](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies))
 
-1. Install `nvm` via Homebrew
-    
-    $ `brew install nvm`
-    
+1. Install `asdf` via Homebrew. Current `asdf-vm` version is `0.10.0`
+   ```shell
+   brew install asdf
+   
+   brew install gpg gawk # These are `asdf-nodejs` plugin dependencies
+   ``` 
+
 2. Add following line to your profile. (`.profile` or `.zshrc` or `.zprofile`)
 
-    ```bash
-    # NVM
-    export NVM_DIR=~/.nvm
-    source $(brew --prefix nvm)/nvm.sh
+    ```shell
+    # asdf
+    [ -s "/$(brew --prefix asdf)/libexec/asdf.sh" ] && . $(brew --prefix asdf)/libexec/asdf.sh
     ```
     
 3. Close and open your terminal again.
   Or Choose one from the following command once for reload your profile. (`.profile` or `.zshrc` or `.zprofile`)
   
     Example
-      - $ `source ~/.profile`
-      - $ `source ~/.zshrc`
-      - $ `source ~/.zprofile`
+      - `source ~/.profile`
+      - `source ~/.zshrc`
+      - `source ~/.zprofile`
       
-4. Verify `nvm` is installed
+4. Verify `asdf` is installed
 
-    $ `nvm --version`
+    `asdf version`
     
-5. Check all available version by this command
+5. Install asdf plugins
 
-    $ `nvm ls-remote`
-    
-6. Install NodeJS (_Recommended to install LTS version. Current LTS is Fermium_)
-    
-    $ `nvm install --lts=Fermium`
-    
-7. Check installed NodeJS in your machine.
+    ```shell
+    asdf plugin add nodejs
+    asdf plugin add yarn
+    ```
 
-    $ `nvm ls`
-    
-8. Set global nodejs version to environment.
-    
-    $ `nvm use default`
-    
-See more about `nvm` : https://github.com/creationix/nvm
+6. Verify `asdf` and `plugins` are ready!
 
-### Part B: Install Yarn and Linked nvm node to Homebrew
+    ```shell
+    ❯ asdf list
 
-1. Install `yarn` via Homebrew
+    nodejs
+    No versions installed
+    yarn
+    No versions installed
+    ```
 
-    $ `brew install yarn`
+### Part B: Install nodejs and yarn
 
-2. Remove `node` dependencies from Homebrew
+> **NOTE**
+>
+> If you are matched to these condition below. [You must install NodeJS v16+ (LTS Gallium)](https://doesitarm.com/app/nodejs/)
+>
+> - Using Apple Silicon machine ✅
+> - Installed `homebrew` on Native build (homebrew PATH: `/opt/homebrew`) ✅
+>
+> Alternatively, If your had configured your **SHELL** to support Homebrew native & Homebrew rosetta2 (e.g. script below like I did)
+> You can install `v15` or lower via Homebrew rosetta2. But I prefer to use v16+ (LTS Gallium)
 
-    $ `brew uninstall node --ignore-dependencies`
+    ```bash
+    # My .zprofile
 
-3. Checkout `node` in environment `$PATH` 
+    # Apple M1
+    if [ "$(uname -m)" = "arm64" ]; then
+      # Use arm64 brew, with fallback to x86 brew
+      if [ -f /opt/homebrew/bin/brew ]; then
+        export PATH="/usr/local/bin${PATH+:$PATH}";
+        eval $(/opt/homebrew/bin/brew shellenv)
+      fi
+    else
+      # Use x86 brew, with fallback to arm64 brew
+      if [ -f /usr/local/bin/brew ]; then
+        export PATH="/opt/homebrew/bin${PATH+:$PATH}";
+        eval $(/usr/local/bin/brew shellenv)
+      fi
+    fi
+    ```
 
-    $ `which node`
-    
-    It should be return => `/User/<your-user-name>/.nvm/versions/node/<latest-node-lts-version>/bin/node`
-    
-4. Checkout `brew doctor` there should show message **WARNING missing yarn dependencies**
-    
-    $ `brew doctor`
-    
-5. Create blank folder and create symbol link `node` folder from `nvm` for `yarn` in Homebrew.
+1. Install `nodejs` and `yarn`
 
-    $ `nvm current` => v14.15.0 (Latest LTS: Fermium) (This should be **Global** node version)
-    
-    $ `mkdir /usr/local/Cellar/node`
-    
-    $ `ln -s ~/.nvm/versions/node/$(nvm current)/ /usr/local/Cellar/node`
+   Current LTS nodejs version is `16.14.x`, Codename: `Gallium`
 
-6. Overwrite `node, npm and npx` from linked `node` in `/usr/local/Cellar/node` to `/usr/local/bin/` homebrew
+    ```shell
+    asdf install nodejs lts
+    asdf install yarn latest
+    ```
 
-    $ `brew link --overwrite node`
-    
-7. Checkout `ls -la /usr/local/bin` to see overwrited `node, npm and npx`
-    
-8. Checkout `brew doctor` again. There shouldn't have **WARNING** message.
+2. Set `nodejs` and `yarn` globally for your machine
 
-    $ `brew doctor`
+    ```shell
+    asdf global nodejs lts
+    asdf global yarn latest
+    ```
 
-9. Prevent Homebrew upgrading node version
+3. Verify they are installed
 
-    $ `brew pin node`
+    ```shell
+    ❯ node -v
+    v16.14.2
 
-10. Enjoy ! ❤️
+    ❯ npm -v
+    8.5.0
 
-### Part C: Upgrading, To change node.js version and Re-configure Homebrew
+    ❯ npx -v
+    8.5.0
 
+    ❯ yarn -v
+    1.22.18
 
-1. Checkout `nvm` for to use `node` version (For this example case I will use LTS Fermium)
+    ❯ asdf list
+    nodejs
+    16.14.2
+    lts
+    yarn
+    1.22.18
 
-    $ `nvm list`    
+    ❯ asdf current
+    nodejs          lts             /Users/nijicha/.tool-versions
+    yarn            1.22.18         /Users/nijicha/.tool-versions
+    ```
 
-    ```shell 
-    $ nvm list
-    ->      v12.13.1
-            system
-    default -> 12.13.1 (-> v12.13.1)
-    node -> stable (-> v12.13.1) (default)
-    stable -> 12.13 (-> v12.13.1) (default)
-    iojs -> N/A (default)
-    unstable -> N/A (default)
-    lts/* -> lts/erbium (-> v12.13.1)
-    lts/argon -> v4.9.1 (-> N/A)
-    lts/boron -> v6.17.1 (-> N/A)
-    lts/carbon -> v8.16.2 (-> N/A)
-    lts/dubnium -> v10.17.0 (-> N/A)
-    lts/erbium -> v12.13.1
-   ``` 
-    \* See more about `nvm` : https://github.com/creationix/nvm
+4. Enjoy! 🥳 ❤️
 
-
-2. Remove the symbol link which we linked `node` in Homebrew `/usr/local/Cellar/node`
-
-    $ `rm -rf /usr/local/Cellar/node`
-
-3. Unpin `node` in Homebrew for upgrading `yarn`
-
-    $ `brew unpin node`
-
-4. Upgrade `yarn`
-   
-    $ `brew upgrade yarn`
-
-5. Continue on Part B 2. - 10. steps again.
-
-6. Say yay 😝
+## Read more
+- https://asdf-vm.com
+- https://github.com/asdf-vm/asdf-nodejs
+- https://github.com/twuni/asdf-yarn
